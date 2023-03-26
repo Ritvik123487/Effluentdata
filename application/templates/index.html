@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,
+        h1 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body,
+        html {
+            height: 100%
+        }
+
+        .bgimg {
+            background-image: url('./../static/css/hay.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="./../static/css/style.css">
+    <style>
+        #page1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #page2 {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page1">
+        <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+            <div class="w3-display-topleft w3-padding-large w3-xlarge">
+                Team 140
+            </div>
+            <div class="w3-display-middle">
+                <h1 class="w3-jumbo w3-animate-top" style="color: black;">Effluent Validator</h1>
+
+                <hr class="w3-border-grey" style="margin:auto;width:40%">
+                <p class="w3-large w3-center">APS112</p>
+            </div>
+            <div class="w3-display-bottomleft w3-padding-large">
+                University of Toronto 
+            </div>
+        </div>
+    </div>
+
+    <div id="page2">
+        <div class="grid-container">
+            <div class="item1">
+                <div class="title"> Effluent Validator</div>
+            </div>
+            <div class="item2">
+                <div class="textcontent">
+                    <p> Project Description </p>
+                </div>
+            </div>
+            <div class="item3">
+                <label for="input1">BOD Data:</label>
+                </br>
+                <input type="text" id="input1" style="background-color: black; color: white;">
+                </br>
+                <label for="input2">COD Data:</label>
+                </br>
+                <input type="text" id="input2" style="background-color: black; color: white;">
+                <div class="graphbut">
+                    <button id="saveButton" style="background-color: black; color: white;">Plot</button>
+                </div>
+            </div>
+
+            <div class="item4">
+                <a href="team/"><button>Meet the team</button></a>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("scroll", function () {
+            var scrollPosition = window.scrollY;
+            var documentHeight = document.documentElement.scrollHeight;
+            var windowHeight = window.innerHeight;
+            var threshold = 40;
+
+            if (scrollPosition + windowHeight > documentHeight - threshold) {
+                document.getElementById("page1").style.top = "-100%";
+                document.getElementById("page2").style.top = "0%";
+            }
+            else if (scrollPosition < threshold) {
+                document.getElementById("page1").style.top = "0%";
+                document.getElementById("page2").style.top = "-100%";
+            }
+        });
+    </script>
+</body>
+<script>
+    const input1 = document.querySelector('#input1');
+    const input2 = document.querySelector('#input2');
+    const saveButton = document.querySelector('#saveButton');
+
+    if (saveButton) {
+        saveButton.addEventListener('click', function () {
+            const value1 = input1.value;
+            const value2 = input2.value;
+            console.log("click")
+            const data = {
+                'input1': value1,
+                'input2': value2
+                
+            }
+
+            fetch('/generate_plot/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const imgSrc = `data:image/png;base64,${data.plot_data}`;
+                    const url = `/graph/?img=${encodeURIComponent(imgSrc)}`;
+                    window.location.href = url;
+                })
+                .catch(error => console.error(error));
+        });
+    }
+</script>
+<style>
+    body,
+    h1 {
+        font-family: "Raleway", sans-serif
+    }
+
+    body,
+    html {
+        height: 100%
+    }
+
+    .bgimg {
+        background-image: url('./../static/css/hay.jpg');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+</html>
+

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}" />
+</head>
+
+<body>
+    <div class="title"> Effluent Validator</div>
+    </br>
+    <div style="text-align:center;">
+        <img id="plotImg" alt="Plot Image"> 
+        <p>
+            Displaying the output BOD and COD data
+        </p>
+     <br/>
+    
+    </div>
+</body>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const imgSrc = urlParams.get('img');
+    const imgElement = document.querySelector('#plotImg');
+    imgElement.src = imgSrc;
+</script>

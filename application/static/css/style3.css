@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Bubblegum Sans' ); 
+
+body {
+    background: linear-gradient(to right, var(--c2) 50%, var(--c5) 50%);
+    color: white;
+}
+
+.title {
+    font-size: 50px;
+    padding-left: 30px;
+    font-family: 'Bubblegum Sans',cursive; 
+    font-size: 50px;
+  }
+
+.person1 {
+    background-image: url('t1.png');
+}
+  
+  
+
+:root {
+    --c1: #469597;
+    --c2: #5BA199;
+    --c3: #BBC6C8;
+    --c4: #E5E3E4;
+    --c5: #DDBEAA;
+};

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Bubblegum Sans' ); 
+body {
+  background-color:  #c0c7e4d6;
+
+  color: white;
+  
+}
+input {
+  width: 25%;
+  padding: 7px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+}
+
+.graphbut {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: none;
+  grid-template-rows: minmax(50px, auto) minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+  grid-gap: 10px;
+  grid-auto-rows: auto;
+}
+
+.item2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 50px;
+  padding-left: 30px;
+  font-family: 'Bubblegum Sans',cursive; 
+  font-size: 50px;    
+}
+
+  :root {
+    --c1: #469597;
+    --c2: #5BA199;
+    --c3: #BBC6C8;
+    --c4: #E5E3E4;
+    --c5: #DDBEAA;
+  }
+  
